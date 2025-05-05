@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dynamic Country Selector</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md text-center">
+        <h1 class="text-2xl font-bold text-blue-600 mb-4">🌍 Dynamic Country Selector</h1>
+        
+        <label for="countryInput" class="block text-sm font-medium text-gray-700 mb-2">
+            Enter country names (comma-separated):
+        </label>
+        <input 
+            type="text" 
+            id="countryInput" 
+            placeholder="e.g., India, USA, Canada"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+
+        <button 
+            onclick="createCountrySelector()" 
+            class="mt-4 bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition duration-200"
+        >
+            Create Dropdown
+        </button>
+
+        <h2 class="mt-6 text-lg font-semibold text-gray-800">Country Dropdown</h2>
+        <select 
+            id="countrySelect" 
+            class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+        ></select>
+
+        <h2 class="mt-6 text-lg font-semibold text-gray-800">Selected Country</h2>
+        <div 
+            id="selectedCountry" 
+            class="mt-2 text-blue-600 font-medium"
+        >
+            No country selected
+        </div>
+    </div>
+
+    <script>
+        function createCountrySelector() {
+            const input = document.getElementById('countryInput').value;
+            const countries = input.split(',').map(country => country.trim()).filter(Boolean);
+            const select = document.getElementById('countrySelect');
+            const displayDiv = document.getElementById('selectedCountry');
+
+            select.innerHTML = '';
+
+            const defaultOption = document.createElement('option');
+            defaultOption.textContent = 'Select a country';
+            defaultOption.disabled = true;
+            defaultOption.selected = true;
+            select.appendChild(defaultOption);
+
+            countries.forEach(country => {
+                const option = document.createElement('option');
+                option.value = country;
+                option.textContent = country;
+                select.appendChild(option);
+            });
+
+            select.onchange = function () {
+                displayDiv.textContent = `Selected Country: ${select.value}`;
+            };
+        }
+    </script>
+</body>
+</html>
