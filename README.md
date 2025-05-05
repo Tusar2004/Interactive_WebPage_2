@@ -4,7 +4,7 @@
 
 A lightweight web app that generates customizable country dropdowns from user input. Perfect for forms, surveys, or learning web development!
 
-![App Screenshot](https://via.placeholder.com/800x500/4F46E5/FFFFFF?text=Dynamic+Country+Selector+Demo)  
+![App Screenshot](https://tusar2004.github.io/Interactive_WebPage_2/)  
 
 ## 🚀 Features  
 
